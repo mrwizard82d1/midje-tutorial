@@ -1,4 +1,4 @@
-(ns quux.other
+(ns quux.other-test
   (:require [midje.sweet :refer :all]))
 
 (println "Testing checkers")
