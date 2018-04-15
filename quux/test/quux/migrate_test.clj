@@ -4,8 +4,7 @@
 
 (facts "about migrate"
   (fact "migrate produces new left and right map"
-    (q.m/migrate {:a 1} :a {}) => {:new-left {} :clashes #{} :new-right {:a 1}}
-    (q.m/migrate {:a 1} :b {}) => {:new-left {:a 1} :clashes #{} :new-right {}})
+    (q.m/migrate {:a 1} :a {}) => (contains {:new-left {} :new-right {:a 1}})
+    (q.m/migrate {:a 1} :b {}) => (contains {:new-left {:a 1} :new-right {}}))
   (fact "migrate handles multiple keys"
-    (q.m/migrate {:a 1 :b 2} :a :b {}) =>
-      {:new-left {} :clashes #{} :new-right {:a 1 :b 2}}))
+    (q.m/migrate {:a 1 :b 2} :a :b {}) => (contains {:new-left {} :new-right {:a 1 :b 2}})))
